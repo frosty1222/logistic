@@ -1,0 +1,8 @@
+#to create view and class with livwwire
+php artisan make:livewire +name
+
+#to create form with livewire
+php artisan livewire:form +name
+
+#making tables 
+php artisan make:migration create_roles_table
