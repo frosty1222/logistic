@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\LogisticController;
 
@@ -18,9 +19,7 @@ use App\Http\Controllers\LogisticController;
 |
 */
 
-Route::get('/home', function () {
-    return view('welcome');
-});
+Route::get('/home',[UserController::class,'home'])->name('home');
 
 Route::post('/login-form',[AuthController::class,'login'])->name('login-form');
 Route::post('/register',[AuthController::class,'register']);
@@ -40,5 +39,10 @@ Route::middleware(['auth'])->group(function () {
 });
 Route::middleware(['role'])->group(function () {
     Route::get('admin/shipping-view',[AdminController::class,'shippingView'])->name('admin/shipping-view');
+    Route::get('staff/shipping-list',[AdminController::class,'shippingList'])->name('staff/shipping-list');
+    Route::get('staff/processing-list',[AdminController::class,'processingList'])->name('staff/processing-list');
+    Route::post('staff/processing-list/update',[AdminController::class,'processingListUpdateStatus'])->name('staff/processing-list/update');
+    Route::get('admin/order-detail/{id}',[AdminController::class,'orderDetail'])->name('admin/order-detail');
 });
-Route::get('/user-review/{id}',[UserController::class,'reviewForm'])->name('user-review');
+Route::get('/user-review/{id}',[ReviewController::class,'reviewForm'])->name('user-review');
+Route::post('/user-review',[ReviewController::class,'postReview'])->name('user-review');

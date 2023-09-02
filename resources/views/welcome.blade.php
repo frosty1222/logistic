@@ -24,6 +24,21 @@
                              <div class="child-list"><a href="/login">Login</a></div>
                              <div class="child-list"><a href="/register">Register</a></div>
                         @endif
+                        @if(@$roleName == 'ADMIN')
+                        <div class="child-list"><a href="/admin/shipping-view">Admin page</a></div>
+                        @endif
+                        @if(@$roleName == 'USER')
+                        <div class="child-list"><a href="/shipping-view">Shipping list</a></div>
+                        @endif
+                        @if(@$roleName == 'CUSTOMER SERVICE')
+                        <div class="child-list"><a href="admin/shipping-view">Admin page</a></div>
+                        @endif
+                        @if(@$roleName == 'LOGISTIC STAFF')
+                        <div class="child-list"><a href="/staff/shipping-list">Shipping list</a></div>
+                        @endif
+                        @if(@$roleName == 'WARE-HOUSE STAFF')
+                        <div class="child-list"><a href="/staff/processing-list">Processing list</a></div>
+                        @endif
                        </div>
                   </div>
              </div>

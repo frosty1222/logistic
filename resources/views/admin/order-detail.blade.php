@@ -1,10 +1,27 @@
-@extends('layouts.home')
-@section('shipping')
+@extends('layouts.admin')
+@section('admin')
 <?php
 $shippingStatus = [
     'Processing','Shipped','In Transit','Delivered'
 ]
 ?>
+<style>
+.new-shipping-order{
+}
+.modal-custom {
+    min-width: 200px;
+    min-height: 200px;
+    box-shadow: 0.1px 0.1px 1px 1px #000;
+    padding: 5px 5px;
+}
+.modal-custom ul li{
+    margin-bottom: 20px;
+    list-style: circle;
+}
+.modal-custom ul li span{
+    padding-left: 10px;
+}
+</style>
 <div class="new-shipping-order">
     <div class="col-md-8">
         <div class="container">
@@ -27,7 +44,7 @@ $shippingStatus = [
                      <span class="badge badge-primary"><?= $shippingStatus[2] ?></span>
                      @else
                      <span class="badge badge-secondary"><?= $shippingStatus[3] ?></span>
-                     @enif
+                     @endif
                     </li>
                </ul>
           </div>

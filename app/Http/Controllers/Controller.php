@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\role;
+use App\Models\UserHasRole;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;

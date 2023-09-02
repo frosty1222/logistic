@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\role;
 use App\Models\User;
+use App\Models\UserHasRole;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +24,6 @@ class AuthController extends Controller
             ->withErrors(['email' => 'These credentials do not match our records.'])
             ->withInput($request->except('password'));
     }
-
     // login form
     public function loginForm(){
         return view('user/login');
@@ -43,7 +44,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-    
+        
         auth()->login($user);
     
         return redirect(RouteServiceProvider::HOME);

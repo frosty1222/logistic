@@ -9,13 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Review extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $table = 'table_review';
-    protected $fillable = ['content','star_number','user_id','logistic_id'];
-
-    public function user(){
-        $this->belongsTo(User::class,'user_id');
-    }
+    protected $table = 'review';
+    protected $fillable = ['content','star_number','order_number'];
     public function logistic(){
-        $this->belongsTo(Logistic::class,'logistic_id');
+        return $this->belongsTo(Logistic::class,'order_number','order_number');
     }
 }

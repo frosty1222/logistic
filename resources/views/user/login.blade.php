@@ -3,6 +3,11 @@
 <div class="login">
     <div class="col-md-6">
         <legend>Login Here !</legend>
+        @if(session('email'))
+        <div class="alert alert-danger">
+            {{ session('email') }}
+        </div>
+       @endif
         <form action="{{route('login-form')}}" method="post" role="form">
         @csrf
             <div class="form-group">

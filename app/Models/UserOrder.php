@@ -12,9 +12,9 @@ class UserOrder extends Model
     protected $fillable = ['status','user_id','logistic_id'];
 
     public function user(){
-        $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class,'user_id','id');
     }
     public function logistic(){
-        $this->belongsTo(Logistic::class,'logistic_id');
+        return $this->belongsTo(Logistic::class,'logistic_id','id');
     }
 }

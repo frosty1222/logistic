@@ -92,7 +92,7 @@
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-  <legend class="text-center">Welcome back Admin</legend>
+  <legend class="text-center">Welcome back <?=strtolower($role)?></legend>
   </nav>
   <!-- /.navbar -->
 
@@ -135,19 +135,37 @@
                with font-awesome or any other icon font library -->
 		    <li class="nav-item">
             <a href="#" class="nav-link">
-              <img src="" id="iconic" alt="">
+              
               <p>
                 Logistic System
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
+              @if($role == 'ADMIN' || $role == 'CUSTOMER SERVICE')
               <li class="nav-item">
-                <a href="" class="return-home">
+                <a href="/admin/shipping-view" class="return-home">
                   <!-- <i class="fa fa-angle-left right"></i> -->
                   <p>View Shipping order</p>
                 </a>
               </li>
+              @endif
+              @if($role == 'LOGISTIC STAFF')
+              <li class="nav-item">
+                <a href="/staff/shipping-list" class="return-home">
+                  <!-- <i class="fa fa-angle-left right"></i> -->
+                  <p>View Shipping List</p>
+                </a>
+              </li>
+              @endif
+              @if($role == 'WARE-HOUSE STAFF')
+              <li class="nav-item">
+                <a href="/staff/processing-list" class="return-home">
+                  <!-- <i class="fa fa-angle-left right"></i> -->
+                  <p>View Processing List</p>
+                </a>
+              </li>
+              @endif
               <!-- <li class="nav-item">
                 <a href="" class="return-home">
                 <img src="" id="iconic" alt="">

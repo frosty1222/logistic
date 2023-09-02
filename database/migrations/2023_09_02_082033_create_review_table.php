@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('table_review', function (Blueprint $table) {
-            $table->integer('star_number')->default(0);
+        Schema::create('review', function (Blueprint $table) {
+            $table->id();
+            $table->string('order_number');
+            $table->text('content');
+            $table->integer('star_number');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('table_review', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('review');
     }
 };

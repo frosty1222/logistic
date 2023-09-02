@@ -7,6 +7,16 @@ $shippingStatus = [
 ?>
 <div class="responsive">
     <legend class="text-center">Shipping View</legend>
+    @if(isset(session('success')))
+    <div class="alert alert-success">
+        {{session('success')}}
+    </div>
+    @endif
+    @if(isset(session('unsuccess')))
+    <div class="alert alert-warning">
+        {{session('unsuccess')}}
+    </div>
+    @endif
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
@@ -44,11 +54,12 @@ $shippingStatus = [
                      @endif
                 </td>
                 <td>
-                    <a href="/admin/order-detail/{{$row->id}}" class="btn btn-primary">View detail</a>
+                    <a href="" class="btn btn-primary">Confirm order</a>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    {{$data->links()}}
 </div>
 @endsection
