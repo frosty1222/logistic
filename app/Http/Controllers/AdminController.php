@@ -23,7 +23,7 @@ class AdminController extends Controller
       ->select('user_orders.*', 'logistics.*')
       ->where('status','0')->orWhere('status','1')->orWhere('status','2')->orWhere('status','3')
       ->paginate(10);
-      return view('admin/shipping-view',compact('data','role'));
+      return view('admin/shipping-list',compact('data','role'));
    }
    public function processingList(){
       $data = DB::table('user_orders')
@@ -49,5 +49,15 @@ class AdminController extends Controller
       $orderUser = UserOrder::where('logistic_id',$id)->first();
       $logistic = Logistic::find($id);
       return view('admin/order-detail',compact('logistic','role','orderUser')); 
+   }
+   public function shippingListPost(Request $request){
+      if($request){
+         $update = UserOrder::where([['user_id',$request->user_id],['logistic_id',$request->logistic_id]])->update(['status'=>$request->status]);
+         if($update){
+            return redirect()->back()->with('success','update order success');
+         }else{
+            return redirect()->back()->with('unsuccess','update order failed');
+         }
+      }
    }
 }

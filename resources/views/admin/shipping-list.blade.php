@@ -7,12 +7,12 @@ $shippingStatus = [
 ?>
 <div class="responsive">
     <legend class="text-center">Shipping View</legend>
-    @if(isset(session('success')))
+    @if(session('success'))
     <div class="alert alert-success">
         {{session('success')}}
     </div>
     @endif
-    @if(isset(session('unsuccess')))
+    @if(session('unsuccess'))
     <div class="alert alert-warning">
         {{session('unsuccess')}}
     </div>
@@ -53,8 +53,22 @@ $shippingStatus = [
                      <span class="badge badge-secondary"><?= $shippingStatus[3] ?></span>
                      @endif
                 </td>
-                <td>
-                    <a href="" class="btn btn-primary">Confirm order</a>
+                <td class="text-center">
+                    <form action="{{route('staff/shipping-list/update')}}" method="post">
+                        @csrf
+                        <input type="text" value="{{$row->user_id}}" name="user_id" hidden>
+                        <input type="text" value="{{$row->logistic_id}}" name="logistic_id" hidden>
+                        <div class="form-group">
+                            
+                        <select name="status" id="input" class="form-control" required="required">
+                            <option value="1" {{ $row->status == '1' ? 'disabled' : '' }}>Shipped</option>
+                            <option value="2" {{ $row->status == '2' ? 'disabled' : '' }}>In Transit</option>
+                            <option value="3" {{ $row->status == '3' ? 'disabled' : '' }}>Delivered</option>
+                        </select>
+                            
+                        </div>
+                        <button type="submit" class="btn btn-primary">update</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

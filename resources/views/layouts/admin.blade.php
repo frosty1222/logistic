@@ -166,6 +166,11 @@
                 </a>
               </li>
               @endif
+              <li class="nav-item">
+                <a href="/logout" class="return-home">
+                  <p>Logout</p>
+                </a>
+              </li>
               <!-- <li class="nav-item">
                 <a href="" class="return-home">
                 <img src="" id="iconic" alt="">
