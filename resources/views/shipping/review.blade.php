@@ -14,7 +14,7 @@
           </div>
           @endif
           <h6>You should submit this form after you have already receive your package</h3>
-            <form action="{{route('user-review')}}" method="post">
+            <form action="{{route('user-review-post')}}" method="post">
                @csrf
                 <div class="form-group">
                      <label for="">Order number</label>
