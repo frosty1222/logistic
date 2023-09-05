@@ -21,9 +21,9 @@
   <body>
     <legend class="text-center">Welcome back <?=strtolower($role)?></h1>
     <hr>
-        <ul class="nav">
+        <ul class="mynav">
           @if($role == 'ADMIN' || $role == 'CUSTOMER SERVICE')
-          <li class="nav-item">
+          <li class="mynav-item">
             <a href="/admin/shipping-view" class="return-home">
               <!-- <i class="fa fa-angle-left right"></i> -->
               <p>View Shipping order</p>
@@ -31,7 +31,7 @@
           </li>
           @endif
           @if($role == 'LOGISTIC STAFF')
-          <li class="nav-item">
+          <li class="mynav-item">
             <a href="/staff/shipping-list" class="return-home">
               <!-- <i class="fa fa-angle-left right"></i> -->
               <p>View Shipping List</p>
@@ -39,14 +39,14 @@
           </li>
           @endif
           @if($role == 'WARE-HOUSE STAFF')
-          <li class="nav-item">
+          <li class="mynav-item">
             <a href="/staff/processing-list" class="return-home">
               <!-- <i class="fa fa-angle-left right"></i> -->
               <p>View Processing List</p>
             </a>
           </li>
           @endif
-          <li class="nav-item">
+          <li class="mynav-item">
             <a href="/logout" class="return-home">
               <p>Logout</p>
             </a>
