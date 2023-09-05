@@ -26,7 +26,7 @@ class userCheckRole
         $userId = $user->id;
         
         $userHasRoles = UserHasRole::where('user_id', $userId)
-            ->whereIn('role_id', ['ADMIN', 'USER'])
+            ->whereIn('role_id', ['1', '2'])
             ->exists();
         
         if ($userHasRoles) {

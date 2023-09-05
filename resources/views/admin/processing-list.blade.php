@@ -58,7 +58,7 @@ $shippingStatus = [
                             <select name="status" id="input" class="form-control" required="required">
                                 <option value="0">Processing</option>
                             </select>
-                            <button type="submit" class="btn btn-success" disabled="$row->status == '0' ? true :false">update</button>
+                            <button type="submit" class="btn btn-success">update</button>
                         </div>
                     </form>
                 </td>

@@ -88,6 +88,7 @@
   </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
+  <!-- Messenger Plugin chat Code -->
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -282,3 +283,5 @@
     @yield('script');
 </body>
 </html>
+</div>
+
