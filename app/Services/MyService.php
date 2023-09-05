@@ -1,5 +1,5 @@
 <?php 
-namespace App\SerVices;
+namespace App\Services;
 
 use App\Models\role;
 use App\Models\UserHasRole;
