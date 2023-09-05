@@ -7,6 +7,7 @@ $shippingStatus = [
 ?>
 <div class="responsive">
     <legend class="text-center">Shipping View</legend>
+    <hr>
     @if(session('success'))
     <div class="alert alert-success">
         {{session('success')}}

@@ -7,6 +7,7 @@ $shippingStatus = [
 ?>
 <div class="responsive">
     <legend class="text-center">Shipping View</legend>
+    <hr>
     <table class="table table-hover table-bordered">
         <thead>
             <tr>

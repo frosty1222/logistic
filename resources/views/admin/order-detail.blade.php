@@ -26,6 +26,7 @@ $shippingStatus = [
     <div class="col-md-8">
         <div class="container">
          <legend class="text-center">Order Detail</legend>
+         <hr>
          <a href="/user-review/{{$logistic->id}}" class="btn btn-primary" id="review">Review</a>
           <div class="modal-custom">
                <ul>
