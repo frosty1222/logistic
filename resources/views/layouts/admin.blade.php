@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   <!-- overlayScrollbars -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  @vite(['resources/sass/app.scss'])
   @vite(['/public/plugins/fontawesome-free/css/all.min.css'])
   @vite(['/public/dist/css/adminlte.min.css'])
   @vite(['/public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css'])
