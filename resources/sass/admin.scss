@@ -22,5 +22,11 @@
         background: #000;
         margin-right: 5px;
         border-radius: 5px;
+        position: relative;
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        gap: 10px;
     }
 }
