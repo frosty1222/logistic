@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\SerVices\MyService;
+use App\Services\MyService;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
