@@ -41,7 +41,6 @@
          </div>
     </div>
 </div>
-@endsection
 <!-- Messenger Plugin chat Code -->
 <div id="fb-root"></div>
 
@@ -71,6 +70,8 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
+@endsection
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {
