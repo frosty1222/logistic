@@ -53,4 +53,4 @@ Route::middleware(['role'])->group(function () {
     Route::post('admin/add-role-post',[AdminController::class,'addRolePost'])->name('admin/add-role-post');
 });
 Route::get('/user-review/{id}',[ReviewController::class,'reviewForm'])->name('user-review');
-Route::post('/user-review',[ReviewController::class,'postReview'])->name('user-review');
+Route::post('/user-review-post',[ReviewController::class,'postReview'])->name('user-review-post');
