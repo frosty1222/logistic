@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Logistic;
+use App\Models\UserHasRole;
 use App\Models\UserOrder;
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\React;
@@ -77,6 +78,23 @@ class LogisticController extends Controller
             return redirect()->back()->with('success','You have update it successfully');
         } else {
             return redirect()->back()->with('unsuccess','something went wrong');
+        }
+    }
+    public function deleteOrder($id){
+        $logistic = Logistic::find($id);
+        if (!$logistic) {
+            return redirect()->back()->with('unsuccess', 'Order not found');
+        }
+        $CreatedOrder = UserOrder::where([['logistic_id', $id], ['user_id',auth()->user()->id]])->first();
+    
+        if (!$CreatedOrder) {
+            return redirect()->back()->with('unsuccess', 'User role not found');
+        }
+    
+        if ($logistic->delete() && $CreatedOrder->delete()) {
+            return redirect()->back()->with('success', 'You have deleted the shipping order');
+        } else {
+            return redirect()->back()->with('unsuccess', 'Something went wrong');
         }
     }
 }

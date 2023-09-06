@@ -36,6 +36,16 @@
         </form>
     </div>
     <div class="reponsive custom-table">
+        @if(session('success'))
+        <div class="alert alert-success">
+           success ! {{ session('success')}}
+        </div>
+        @endif
+        @if(session('unsuccess'))
+        <div class="alert alert-danger">
+           unsuccess ! {{ session('unsuccess')}}
+        </div>
+        @endif
     <table class="table table-bordered">
         <thead class="thead-inverse">
             <tr>
@@ -61,7 +71,9 @@
                           @if(!$row->status || $row->status == 'Processing')
                           <a href="/editOrder/{{$row->id}}" class="btn btn-warning">Edit order</a>
                           @endif
-                          <a href="/delete-order/{{$row->id}}" class="btn btn-danger">Delete Order</a>
+                          @if(!$row->status || $row->status == 'Delivered')
+                          <a href="user/delete-order/{{$row->id}}" class="btn btn-danger">Delete Order</a>
+                          @endif
                     </td>
                 </tr>
                 @endforeach

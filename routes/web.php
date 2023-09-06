@@ -32,6 +32,7 @@ Route::get('/order-detailed/{id}',[LogisticController::class,'orderDetail'])->na
 // protect other route 
 Route::middleware(['userRole'])->group(function(){
     Route::get('/shipping-view',[LogisticController::class,'home'])->name('shipping-view');
+    Route::get('user/delete-order/{id}',[LogisticController::class,'deleteOrder'])->name('user/delete-order');
     Route::post('/add-new-shipping',[LogisticController::class,'storeNewForm'])->name('add-new-shipping');
     Route::get('/add-new-shipping-order',[LogisticController::class,'addNewForm'])->name('add-new-shipping-order');
     Route::get('/editOrder/{id}',[LogisticController::class,'editForm'])->name('editOrder');
