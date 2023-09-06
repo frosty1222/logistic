@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Logistic;
+use App\Models\role;
+use App\Models\User;
+use App\Models\UserHasRole;
 use App\Models\UserOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -59,5 +62,36 @@ class AdminController extends Controller
             return redirect()->back()->with('unsuccess','update order failed');
          }
       }
+   }
+   public function assignRole(){
+      $myService = app('myService');
+      $role = $myService->getRole();
+      $user = User::all();
+      $roles = role::all();
+      return view('admin/assign-role',compact('user','role','roles'));
+   }
+   public function assignRolePost(Request $request){
+     $assign = UserHasRole::create($request->all());
+     if($assign){
+       return redirect()->back()->with('success','You have assigned a role');
+     }
+     else{
+      return redirect()->back()->with('unsuccess','Something went wrong');
+     }
+   }
+   public function addRole(){
+      $myService = app('myService');
+      $role = $myService->getRole();
+      return view('admin/add-role',compact('role'));
+   }
+   public function addRolePost(Request $request){
+     $addRole = role::create([
+       'name'=>ucwords($request->name),
+     ]);
+     if($addRole){
+         return redirect()->back()->with('success','You have added a role');
+     }else{
+         return redirect()->back()->with('unsuccess','Something went wrong. please try again');
+     }
    }
 }

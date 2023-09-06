@@ -58,6 +58,9 @@
                     <td>{{$row->expected_delivery_date}}</td>
                     <td class="text-center">
                           <a href="/order-detailed/{{$row->id}}" class="btn btn-primary">Show detail</a>
+                          @if(!$row->status || $row->status == 'Processing')
+                          <a href="/editOrder/{{$row->id}}" class="btn btn-warning">Edit order</a>
+                          @endif
                           <a href="/delete-order/{{$row->id}}" class="btn btn-danger">Delete Order</a>
                     </td>
                 </tr>

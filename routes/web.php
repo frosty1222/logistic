@@ -34,6 +34,8 @@ Route::middleware(['userRole'])->group(function(){
     Route::get('/shipping-view',[LogisticController::class,'home'])->name('shipping-view');
     Route::post('/add-new-shipping',[LogisticController::class,'storeNewForm'])->name('add-new-shipping');
     Route::get('/add-new-shipping-order',[LogisticController::class,'addNewForm'])->name('add-new-shipping-order');
+    Route::get('/editOrder/{id}',[LogisticController::class,'editForm'])->name('editOrder');
+    Route::post('/edit-shipping-order-post',[LogisticController::class,'postEdit'])->name('edit-shipping-order-post');
 });
 Route::middleware(['auth'])->group(function(){
     Route::get('/logout',[AuthController::class,'logout'])->name('logout');
@@ -45,6 +47,10 @@ Route::middleware(['role'])->group(function () {
     Route::get('staff/processing-list',[AdminController::class,'processingList'])->name('staff/processing-list');
     Route::post('staff/processing-list/update',[AdminController::class,'processingListUpdateStatus'])->name('staff/processing-list/update');
     Route::get('admin/order-detail/{id}',[AdminController::class,'orderDetail'])->name('admin/order-detail');
+    Route::get('admin/assign-role',[AdminController::class,'assignRole'])->name('admin/assign-role');
+    Route::post('admin/assign-role-post',[AdminController::class,'assignRolePost'])->name('admin/assign-role-post');
+    Route::get('admin/add-role',[AdminController::class,'addRole'])->name('admin/add-role');
+    Route::post('admin/add-role-post',[AdminController::class,'addRolePost'])->name('admin/add-role-post');
 });
 Route::get('/user-review/{id}',[ReviewController::class,'reviewForm'])->name('user-review');
 Route::post('/user-review',[ReviewController::class,'postReview'])->name('user-review');

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Logistic;
 use App\Models\UserOrder;
 use Illuminate\Support\Facades\DB;
+use Laravel\Ui\Presets\React;
+
 class LogisticController extends Controller
 {
     public function __construct()
@@ -59,5 +61,22 @@ class LogisticController extends Controller
         $orderUser = UserOrder::where('logistic_id',$id)->first();
         $logistic = Logistic::find($id);
         return view('shipping/order-detail',compact('orderUser','logistic'));
+    }
+    public function editForm(Request $request,$id){
+        $data = [];
+       if($id){
+          $data = Logistic::find($id);
+       }
+       return view('shipping/edit-order',compact('data'));
+    }
+    public function postEdit(Request $request){
+        $id = $request->id;
+        $logistic = Logistic::find($id);
+        if ($logistic) {
+            $logistic->update($request->all());
+            return redirect()->back()->with('success','You have update it successfully');
+        } else {
+            return redirect()->back()->with('unsuccess','something went wrong');
+        }
     }
 }

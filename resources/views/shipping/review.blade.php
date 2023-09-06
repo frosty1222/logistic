@@ -51,8 +51,6 @@
       var selectedRating = $(this).val();
       // Update the hidden input field with the selected rating
       $('#selected-rating').val(selectedRating);
-      alert(selectedRating)
-      // You can also do further processing with the selected rating here
     });
   });
 </script>
