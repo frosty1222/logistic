@@ -10,10 +10,10 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
   </head>
   <body>
-    <legend class="text-center">Welcome back <?=strtolower($role)?></h1>
+    <legend class="text-center">Welcome back <?=strtolower(@$role)?></h1>
     <hr>
         <ul class="mynav">
-          @if($role == 'ADMIN' || $role == 'CUSTOMER SERVICE')
+          @if(@$role == 'ADMIN' || @$role == 'CUSTOMER SERVICE')
           <li class="mynav-item">
             <a href="/admin/shipping-view" class="return-home">
               <!-- <i class="fa fa-angle-left right"></i> -->
@@ -21,7 +21,7 @@
             </a>
           </li>
           @endif
-          @if($role == 'ADMIN')
+          @if(@$role == 'ADMIN')
           <li class="mynav-item">
             <a href="/admin/assign-role" class="return-home">
               <!-- <i class="fa fa-angle-left right"></i> -->
@@ -29,7 +29,7 @@
             </a>
           </li>
           @endif
-          @if($role == 'ADMIN')
+          @if(@$role == 'ADMIN')
           <li class="mynav-item">
             <a href="/admin/add-role" class="return-home">
               <!-- <i class="fa fa-angle-left right"></i> -->
@@ -37,7 +37,7 @@
             </a>
           </li>
           @endif
-          @if($role == 'LOGISTIC STAFF')
+          @if(@$role == 'LOGISTIC STAFF')
           <li class="mynav-item">
             <a href="/staff/shipping-list" class="return-home">
               <!-- <i class="fa fa-angle-left right"></i> -->
@@ -45,7 +45,7 @@
             </a>
           </li>
           @endif
-          @if($role == 'WARE-HOUSE STAFF')
+          @if(@$role == 'WARE-HOUSE STAFF')
           <li class="mynav-item">
             <a href="/staff/processing-list" class="return-home">
               <!-- <i class="fa fa-angle-left right"></i> -->

@@ -28,7 +28,7 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/login',[AuthController::class,'loginForm'])->name('login');
     Route::get('/register',[AuthController::class,'registerForm'])->name('register');
 });
-Route::get('/order-detailed/{id}',[LogisticController::class,'orderDetail'])->name('order-detailed');
+Route::get('/order-detailed/{id}',[LogisticController::class,'orderDetail'])->name('order-detailed')->withoutMiddleware(['auth','role']);
 // protect other route 
 Route::middleware(['userRole'])->group(function(){
     Route::get('/shipping-view',[LogisticController::class,'home'])->name('shipping-view');
@@ -52,6 +52,6 @@ Route::middleware(['role'])->group(function () {
     Route::get('admin/add-role',[AdminController::class,'addRole'])->name('admin/add-role');
     Route::post('admin/add-role-post',[AdminController::class,'addRolePost'])->name('admin/add-role-post');
 });
-Route::get('general/order-detail/{id}',[AdminController::class,'orderDetail'])->name('general/order-detail');
-Route::get('/user-review/{id}',[ReviewController::class,'reviewForm'])->name('user-review');
-Route::post('/user-review-post',[ReviewController::class,'postReview'])->name('user-review-post');
+Route::get('general/order-detail/{id}',[AdminController::class,'orderDetail'])->name('general/order-detail')->withoutMiddleware(['auth','role']);
+Route::get('/user-review/{id}',[ReviewController::class,'reviewForm'])->name('user-review')->withoutMiddleware(['auth','role']);
+Route::post('/user-review-post',[ReviewController::class,'postReview'])->name('user-review-post')->withoutMiddleware(['auth','role']);

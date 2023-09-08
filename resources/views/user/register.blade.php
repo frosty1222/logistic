@@ -3,6 +3,11 @@
 <div class="register">
     <div class="col-md-6">
         <legend>Register Here !</legend>
+        @if(session('unsuccess'))
+        <div class="alert alert-danger">
+            unsucess !{{session('unsuccess')}}
+        </div>
+        @endif
         <form action="{{route('register')}}" method="post" role="form">
             @csrf
             <div class="form-group">

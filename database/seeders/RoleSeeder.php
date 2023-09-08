@@ -14,11 +14,7 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         $roles = [
-            ['name' => 'ADMIN'],
-            ['name' => 'USER'],
-            ['name' => 'CUSTOMER SERVICE'],
-            ['name' => 'LOGISTIC STAFF'],
-            ['name' => 'WARE-HOUSE STAFF'],
+            ['name' => 'CUSTOMER'],
         ];
 
         // Insert data into the roles table

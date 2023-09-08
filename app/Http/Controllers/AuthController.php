@@ -44,10 +44,17 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        
-        auth()->login($user);
-    
-        return redirect(RouteServiceProvider::HOME);
+        $lastRole =role::latest()->first();
+        $assignRole = UserHasRole::create([
+            'user_id'=>$user->id,
+            'role_id'=>$lastRole->id
+        ]);
+        if($assignRole){
+           auth()->login($user);
+           return redirect(RouteServiceProvider::HOME);
+        }else{
+            return redirect()->back()->with('unsuccess','please try again');
+        }
     }
     public function logout(){
         auth()->logout();
