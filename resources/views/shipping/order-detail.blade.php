@@ -2,7 +2,7 @@
 @section('shipping')
 <?php
 $shippingStatus = [
-    'Processing','Shipped','In Transit','Delivered'
+    'Processed','Shipped','In Transit','Delivered'
 ]
 ?>
 <div class="new-shipping-order">
@@ -19,8 +19,10 @@ $shippingStatus = [
                   <li>Shipping date:<span>{{$logistic->shipping_date}}</span></li>
                   <li>Expected delivery date:<span>{{$logistic->expected_delivery_date}}</span></li>
                     <li>Order status:
-                     @if(!$orderUser->status || $orderUser->status == '0')
-                     <span class="badge badge-warning"><?= $shippingStatus[0] ?></span>
+                     @if($orderUser->status == null)
+                     <span class="badge badge-warning">Processing</span>
+                     @elseif( $orderUser->status == '0')
+                     <span class="badge badge-success"><?= $shippingStatus[0] ?></span>
                      @elseif($orderUser->status == '1')
                      <span class="badge badge-success"><?= $shippingStatus[1] ?></span>
                      @elseif($orderUser->status == '2')

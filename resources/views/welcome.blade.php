@@ -16,9 +16,6 @@
         <div class="welcom-content">
              <div class="top-bar">
                   <div class="bar-list">
-                       <div class="left-list">
-                            <div class="child-list"><a href="{{route('shipping-view')}}">Shipping list view</a></div>
-                       </div>
                        <div class="right-list">
                         @if(!Auth::check())
                              <div class="child-list"><a href="/login">Login</a></div>

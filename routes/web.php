@@ -47,11 +47,11 @@ Route::middleware(['role'])->group(function () {
     Route::post('staff/shipping-list/update',[AdminController::class,'shippingListPost'])->name('staff/shipping-list/update');
     Route::get('staff/processing-list',[AdminController::class,'processingList'])->name('staff/processing-list');
     Route::post('staff/processing-list/update',[AdminController::class,'processingListUpdateStatus'])->name('staff/processing-list/update');
-    Route::get('admin/order-detail/{id}',[AdminController::class,'orderDetail'])->name('admin/order-detail');
     Route::get('admin/assign-role',[AdminController::class,'assignRole'])->name('admin/assign-role');
     Route::post('admin/assign-role-post',[AdminController::class,'assignRolePost'])->name('admin/assign-role-post');
     Route::get('admin/add-role',[AdminController::class,'addRole'])->name('admin/add-role');
     Route::post('admin/add-role-post',[AdminController::class,'addRolePost'])->name('admin/add-role-post');
 });
+Route::get('general/order-detail/{id}',[AdminController::class,'orderDetail'])->name('general/order-detail');
 Route::get('/user-review/{id}',[ReviewController::class,'reviewForm'])->name('user-review');
 Route::post('/user-review-post',[ReviewController::class,'postReview'])->name('user-review-post');

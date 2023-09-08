@@ -2,7 +2,7 @@
 @section('admin')
 <?php
 $shippingStatus = [
-    'Processing','Shipped','In Transit','Delivered'
+    'Processed','Shipped','In Transit','Delivered'
 ]
 ?>
 <div class="responsive">
@@ -44,11 +44,15 @@ $shippingStatus = [
                 <td>{{$row->recipient_address}}</td>
                 <td>{{$row->shipping_address}}</td>
                 <td>
-                     @if(!$row->status)
-                     <span class="badge badge-warning"><?= $shippingStatus[0] ?></span>
-                     @elseif($row->status == 1)
+                     @if($row->status == null)
+                     <span class="badge badge-warning">Processing</span>
+                     @elseif($row->status == '0')
+                     <span class="badge badge-success">
+                        <?= $shippingStatus[0] ?>
+                     </span>
+                     @elseif($row->status == '1')
                      <span class="badge badge-success"><?= $shippingStatus[1] ?></span>
-                     @elseif($row->status == 2)
+                     @elseif($row->status == '2')
                      <span class="badge badge-primary"><?= $shippingStatus[2] ?></span>
                      @else
                      <span class="badge badge-secondary"><?= $shippingStatus[3] ?></span>

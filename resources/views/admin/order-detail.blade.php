@@ -2,11 +2,14 @@
 @section('admin')
 <?php
 $shippingStatus = [
-    'Processing','Shipped','In Transit','Delivered'
+    'Processed','Shipped','In Transit','Delivered'
 ]
 ?>
 <style>
 .new-shipping-order{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .modal-custom {
     min-width: 200px;
@@ -14,9 +17,12 @@ $shippingStatus = [
     box-shadow: 0.1px 0.1px 1px 1px #000;
     padding: 5px 5px;
 }
+.modal-custom ul{
+    text-align: left;
+}
 .modal-custom ul li{
     margin-bottom: 20px;
-    list-style: circle;
+    list-style:none;
 }
 .modal-custom ul li span{
     padding-left: 10px;
@@ -37,11 +43,13 @@ $shippingStatus = [
                   <li>Shipping date:<span>{{$logistic->shipping_date}}</span></li>
                   <li>Expected delivery date:<span>{{$logistic->expected_delivery_date}}</span></li>
                     <li>Order status:
-                     @if(!$logistic->status)
-                     <span class="badge badge-warning"><?= $shippingStatus[0] ?></span>
-                     @elseif($logistic->status == 1)
+                     @if($logistic->status == null)
+                     <span class="badge badge-warning">Processing</span>
+                     @elseif($logistic->status == '0')
+                       <span class="badge badge-success"><?= $shippingStatus[0] ?></span>
+                     @elseif($logistic->status == '1')
                      <span class="badge badge-success"><?= $shippingStatus[1] ?></span>
-                     @elseif($logistic->status == 2)
+                     @elseif($logistic->status == '2')
                      <span class="badge badge-primary"><?= $shippingStatus[2] ?></span>
                      @else
                      <span class="badge badge-secondary"><?= $shippingStatus[3] ?></span>

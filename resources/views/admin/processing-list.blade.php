@@ -2,7 +2,7 @@
 @section('admin')
 <?php
 $shippingStatus = [
-    'Processing','Shipped','In Transit','Delivered'
+    'Processed','Shipped','In Transit','Delivered'
 ]
 ?>
 <div class="responsive">
@@ -40,11 +40,13 @@ $shippingStatus = [
                 <td>{{$row->shipping_date}}</td>
                 <td>{{$row->expected_delivery_date}}</td>
                 <td>
-                     @if(!$row->status || $row->status == '0')
-                     <span class="badge badge-warning"><?= $shippingStatus[0] ?></span>
-                     @elseif($row->status == 1)
+                     @if($row->status == null)
+                     <span class="badge badge-warning">Processing</span>
+                     @elseif($row->status == '0')
+                      <span class="badge badge-success"><?= $shippingStatus[0] ?></span>
+                     @elseif($row->status == '1')
                      <span class="badge badge-success"><?= $shippingStatus[1] ?></span>
-                     @elseif($row->status == 2)
+                     @elseif($row->status == '2')
                      <span class="badge badge-primary"><?= $shippingStatus[2] ?></span>
                      @else
                      <span class="badge badge-secondary"><?= $shippingStatus[3] ?></span>
@@ -57,7 +59,7 @@ $shippingStatus = [
                         <input type="text" name="logistic_id" value="{{$row->logistic_id}}" hidden>
                         <div class="d-flex">
                             <select name="status" id="input" class="form-control" required="required">
-                                <option value="0">Processing</option>
+                                <option value="0">Processed</option>
                             </select>
                             <button type="submit" class="btn btn-success">update</button>
                         </div>
