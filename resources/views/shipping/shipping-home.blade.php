@@ -68,7 +68,7 @@
                     <td>{{$row->expected_delivery_date}}</td>
                     <td class="text-center">
                           <a href="/order-detailed/{{$row->id}}" class="btn btn-primary">Show detail</a>
-                          @if(!$row->status || $row->status == 'Processing')
+                          @if(!$row->status || $row->status == '0')
                           <a href="/editOrder/{{$row->id}}" class="btn btn-warning">Edit order</a>
                           @endif
                           @if(!$row->status || $row->status == 'Delivered')

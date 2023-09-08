@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
    public function shippingView(){
-      $data = Logistic::paginate(10);
+      $data = DB::table('user_orders')
+      ->join('logistics', 'user_orders.logistic_id', '=', 'logistics.id')
+      ->select('user_orders.*', 'logistics.*')
+      ->paginate(10);
       $myService = app('myService');
       $role = $myService->getRole();
       return view('admin/shipping-view',compact('data','role'));
